@@ -4,6 +4,8 @@ import Listings from '../components/Listings/Listings';
 
 import Building from '../components/Building/Building';
 
+import ListingForm from '../components/ListingForm/ListingForm';
+
 import './App.css';
 
 class App extends Component {
@@ -12,6 +14,7 @@ class App extends Component {
       <div className="App">
         <Listings />
         <Building />
+        <ListingForm />
       </div>
     );
   }
