@@ -9,10 +9,11 @@ import ListingItem from '../ListingItem/ListingItem';
 class Listings extends React.Component {
   static propTypes = {
     listings: PropTypes.arrayOf(listingShape),
+    onListingSelection: PropTypes.func,
   };
 
   render () {
-    const {listings} = this.props;
+    const {listings, onListingSelection} = this.props;
     // const listings = this.props.listings; same as above
     const listingsItemComponents = listings.map((item, index) => {
       return (
@@ -21,6 +22,7 @@ class Listings extends React.Component {
           listing={item}
           index={index}
           key={item.id}
+          onSelect={onListingSelection}
         />
       );
     });
