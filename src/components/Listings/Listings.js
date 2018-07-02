@@ -1,9 +1,10 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import {listingShape} from '../../propz/listingprop';
 import './Listings.css';
+
+import ListingItem from '../ListingItem/ListingItem';
 
 class Listings extends React.Component {
   static propTypes = {
@@ -15,7 +16,11 @@ class Listings extends React.Component {
     // const listings = this.props.listings; same as above
     const listingsItemComponents = listings.map((item) => {
       return (
-        <li key={item.id}>{item.price}</li>
+        // <li key={item.id}>{item.price}</li>
+        <ListingItem
+          listing={item}
+          key={item.id}
+        />
       );
     });
     return (
