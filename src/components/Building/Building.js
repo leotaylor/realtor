@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Building.css';
 
+import BuildingTile from '../BuildingTile/BuildingTile';
 import {listingOptionalShape} from '../../propz/listingprop';
 import {formatPrice} from '../../helpers';
 
@@ -11,7 +12,7 @@ class Building extends React.Component {
     const {listing} = this.props;
     if (listing.nope) {
       return (
-        <div className="building">
+        <div className="Building">
           <h1 className="unknown-listing"><span className="glyphicon glyphicon-arrow-left"></span>Select A Property</h1>
         </div>
       );
@@ -29,6 +30,28 @@ class Building extends React.Component {
             <h5>{listing.squareFootage} ft<sup>2</sup></h5>
             <p>{listing.description}</p>
           </div>
+        </div>
+        <div class="row">
+          <BuildingTile
+            imageSrc='cal.png'
+            altText='calendar'
+            pTagText={`Built: ${listing.yearBuilt}`}
+          />
+          <BuildingTile
+            imageSrc='hill.png'
+            altText='hill'
+            pTagText={`${listing.lotInAcres} acres`}
+          />
+          <BuildingTile
+            imageSrc='flame.png'
+            altText='flame'
+            pTagText={listing.heating}
+          />
+          <BuildingTile
+            imageSrc='snow.png'
+            altText='snowflake'
+            pTagText={listing.cooling}
+          />
         </div>
       </div>
     );
