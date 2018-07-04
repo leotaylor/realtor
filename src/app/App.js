@@ -24,6 +24,19 @@ class App extends Component {
     });
   }
 
+  formSubmitEvent = (newListing) => {
+    listingRequests.postRequest(newListing)
+      .then(() => {
+        listingRequests.getRequest()
+          .then((listings) => {
+            this.setState({listings});
+          });
+      })
+      .catch((err) => {
+        console.error('error with listing post', err);
+      });
+  }
+
   componentDidMount () {
     connection();
     listingRequests.getRequest()
@@ -51,7 +64,9 @@ class App extends Component {
           <Building listing={selectedListing} />
         </div>
         <div className="col-sm-12">
-          <ListingForm />
+          <ListingForm
+            onSubmit={this.formSubmitEvent}
+          />
         </div>
       </div>
     );
