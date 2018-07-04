@@ -3,29 +3,31 @@ import PropTypes from 'prop-types';
 
 import './ListingForm.css';
 
+const defaultListing = {
+  address: '',
+  city: '',
+  state: '',
+  zip: 0,
+  squareFootage: 0,
+  price: 0,
+  numBeds: 0,
+  numBaths: 0,
+  description: '',
+  estimatedMonthlyMorgage: 0,
+  lotInAcres: 0,
+  yearBuilt: 0,
+  heating: '',
+  cooling: '',
+  imageUrl: '',
+};
+
 class ListingForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
   }
 
   state = {
-    newListing: {
-      address: '',
-      city: '',
-      state: '',
-      zip: 0,
-      squareFootage: 0,
-      price: 0,
-      numBeds: 0,
-      numBaths: 0,
-      description: '',
-      estimatedMonthlyMorgage: 0,
-      lotInAcres: 0,
-      yearBuilt: 0,
-      heating: '',
-      cooling: '',
-      imageUrl: '',
-    },
+    newListing: defaultListing,
   }
 
   formFieldStringState = (name, e) => {
@@ -102,8 +104,31 @@ class ListingForm extends React.Component {
 
   formSubmit = (e) => {
     const {onSubmit} = this.props;
+    const {newListing} = this.state;
     e.preventDefault();
-    onSubmit(this.state.newListing);
+    if (
+      newListing.address &&
+      newListing.city &&
+      newListing.state &&
+      newListing.zip &&
+      newListing.squareFootage &&
+      newListing.price &&
+      newListing.numBeds &&
+      newListing.numBaths &&
+      newListing.description &&
+      newListing.estimatedMonthlyMorgage &&
+      newListing.lotInAcres &&
+      newListing.yearBuilt &&
+      newListing.heating &&
+      newListing.cooling &&
+      newListing.imageUrl
+    ) {
+      onSubmit(this.state.newListing);
+      this.setState({newListing: defaultListing});
+    } else {
+      alert('dear god why?????');
+    }
+
   }
 
   render () {
