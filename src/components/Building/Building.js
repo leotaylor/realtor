@@ -31,7 +31,7 @@ class Building extends React.Component {
             <p>{listing.description}</p>
           </div>
         </div>
-        <div class="row">
+        <div className="row">
           <BuildingTile
             imageSrc='cal.png'
             altText='calendar'
